@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -27,6 +28,13 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    //Es necesario sobreescribir la función de inicio de sesión para evitar una exception
+    //con la autenticación
+    
+    public function login(Request $request){
+        return $request;
+    }
 
     /**
      * Create a new controller instance.
