@@ -54,12 +54,12 @@
                                     Dropdown
                                 </a>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">
-                                    {{ Auth::user()->name }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                    
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{route('usuario.index')}}">Usuarios</a>
+                                    <a class="dropdown-item" href="{{route('empleado.index')}}">Empleados</a>
+
                                 </div>
                             </li>
 

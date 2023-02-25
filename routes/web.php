@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +22,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/authentication', [LoginController::class, 'login'])->name('authentication');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('usuario', UsuarioController::class);
+Route::resource('empleado', EmpleadoController::class);

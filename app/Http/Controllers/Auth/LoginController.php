@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\UserRepository\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    private $instance_repo;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -33,7 +37,21 @@ class LoginController extends Controller
     //con la autenticación
     
     public function login(Request $request){
-        return $request;
+        $this->instance_repo = UserRepository::GetInstance();
+        $data_array_to_auth = [
+            'username' => $request->username,
+            'password' => $request->password
+        ];
+        $response = $this->instance_repo->authenticate($data_array_to_auth);
+        if($response != null && $response != false){
+            $usuario = $this->instance_repo->getByUsername($request->username);
+            Auth::loginUsingId($usuario->id);
+            $request->session()->regenerate();
+            $request->session()->put('user', $usuario);
+            return view('home');
+        }else{
+            return back()->withErrors(['username' => 'Credenciales no válidas', 'password' => 'Credenciales no válidas']);
+        }
     }
 
     /**
