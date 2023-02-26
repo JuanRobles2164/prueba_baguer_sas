@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function logout(Request $request){
+        if($request->hasSession()){
+            $request->session()->flush();
+        }
+        return view('auth.login');
+    }
 }

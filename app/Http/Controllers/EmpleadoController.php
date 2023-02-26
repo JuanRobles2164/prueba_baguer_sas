@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empleado;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmpleadoRequest;
 use App\Http\Requests\UpdateEmpleadoRequest;
@@ -33,35 +32,4 @@ class EmpleadoController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Empleado $empleado)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Empleado $empleado)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateEmpleadoRequest $request, Empleado $empleado)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Empleado $empleado)
-    {
-        //
-    }
 }
