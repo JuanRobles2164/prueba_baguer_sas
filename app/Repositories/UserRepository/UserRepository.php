@@ -2,6 +2,7 @@
 
 namespace App\Repositories\UserRepository;
 
+use App\Models\Rol;
 use App\Models\User;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Cache;
@@ -42,6 +43,13 @@ class UserRepository extends BaseRepository{
 
     public function getAll($paginate = 10){
         return $this->getModel()->paginate($paginate);
+    }
+
+    public function getRolesByUserId($userId){
+        return DB::table('roles')
+                ->join('rol_usuarios', 'rol_usuarios.rol_id', '=','roles.id')
+                ->where('rol_usuarios.usuario_id', $userId)
+                ->get('roles.*');
     }
 
     public function findByParams($params){

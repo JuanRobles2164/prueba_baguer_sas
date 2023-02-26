@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\RolRepository\RolRepository;
+use App\Repositories\RolUsuarioRepository\RolUsuarioRepository;
 use App\Repositories\UserRepository\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -101,5 +103,29 @@ class UsuarioController extends Controller
         $user = $this->repo_instance->find($request->usuario);
         $this->repo_instance->delete($user);
         return back();
+    }
+
+    public function gestionarRoles(User $usuario){
+        $this->repo_instance = UserRepository::GetInstance();
+        $roles_usuario = $this->repo_instance->getRolesByUserId($usuario->id);
+        $this->repo_instance = RolRepository::GetInstance();
+        $roles_todos = $this->repo_instance->getAll();
+        return view('usuario.roles', [
+            'roles_todos' => $roles_todos, 
+            'roles_usuario' => $roles_usuario, 
+            'user' => $usuario
+        ]);
+    }
+
+    //variables -> usuario_id (int), rol_id (int), agregar (bool)
+    public function agregarQuitarRol(Request $request){
+        $this->repo_instance = RolUsuarioRepository::GetInstance();
+        $response = null;
+        if($request->boolean('agregar')){
+            $response = $this->repo_instance->agregarRol($request->rol_id, $request->usuario_id);
+        }else{
+            $response = $this->repo_instance->quitarRol($request->rol_id, $request->usuario_id);
+        }
+        return $response;
     }
 }

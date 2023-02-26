@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <a href="{{route('usuario.index')}}" class="btn btn-primary mb-2"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Volver</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

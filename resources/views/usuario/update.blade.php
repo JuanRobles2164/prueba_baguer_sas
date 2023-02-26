@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <a href="{{route('usuario.index')}}" class="btn btn-primary mb-2"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Volver</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -26,7 +27,7 @@
                             <label for="password_confirmation_input">Confirmar contraseña</label>
                             <input class="form-control" type="password" name="password_confirmation" id="password_confirmation_input">
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3 mb-3">Crear</button>
+                        <button type="submit" class="btn btn-primary mt-3 mb-3">Editar</button>
                     </div>
                 </form>
             </div>

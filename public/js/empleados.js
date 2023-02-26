@@ -38,7 +38,9 @@ async function cargarDataPagina() {
                     :apellidos
                 </td>
                 <td>
-                    <a href="#" onclick="detallesModal(':iteradorElemento')">Detalles</a>
+                    <a href="#" onclick="detallesModal(':iteradorElemento')" class="btn btn-secondary">
+                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                    </a>
                 </td>
             </tr>
             `;
