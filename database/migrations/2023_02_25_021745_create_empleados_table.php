@@ -13,21 +13,20 @@ return new class extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id();
-            $table->string('nombres', 100)->nullable();
-            $table->string('apellidos', 100)->nullable();
-            $table->char('genero', 2)->default('M');
-            $table->string('celular', 15)->nullable();
-            $table->string('telefono', 15)->nullable();
-            $table->string('email', 40)->unique();
-            $table->string('direccion', 40)->nullable();
-            $table->string('pais', 100)->nullable();
-            $table->string('estado', 100)->nullable();
-            $table->string('ciudad', 100)->nullable();
-            $table->string('thumbnail', 100)->nullable();
-            $table->unsignedBigInteger('usuario_id');
+            $table->string('nombres', 100);
+            $table->string('apellidos', 100);
+            $table->string('genero', 10);
+            $table->string('celular', 15);
+            $table->string('telefono', 15);
+            $table->string('email', 40);
+            $table->string('direccion', 40);
+            $table->string('pais', 100);
+            $table->string('estado', 100);
+            $table->string('ciudad', 100);
+            $table->string('thumbnail', 100);
+            $table->string('usuario');
+            $table->string('nacionalidad', 20);
             $table->timestamps();
-
-            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
