@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +22,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-<<<<<<< Updated upstream
-=======
 
 Route::resource('usuario', UsuarioController::class);
 Route::resource('empleado', EmpleadoController::class);
@@ -31,4 +31,3 @@ Route::name('usuarios.')->group(function(){
         Route::get('/usuario/{usuario}/eliminar', 'destroy')->name('destroy');
     });
 });
->>>>>>> Stashed changes
