@@ -53,11 +53,9 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function show(User $user)
     {
-        $this->repo_instance = UserRepository::GetInstance();
-        $user = $this->repo_instance->find($request->usuario);
-        return view('usuario.details', ['user' => $user]);
+
     }
 
     /**
@@ -95,11 +93,9 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request)
+    public function destroy(User $user)
     {
-        $this->repo_instance = UserRepository::GetInstance();
-        $user = $this->repo_instance->find($request->usuario);
-        $user->delete();
-        return Redirect::to(route('usuario.index'));
+        
+        return back();
     }
 }
